@@ -1,0 +1,29 @@
+
+Установите на личный Linux-компьютер или учебную локальную ВМ с Linux следующие сервисы(желательно ОС ubuntu 20.04):
+
+VirtualBox,
+Vagrant, рекомендуем версию 2.3.4
+Packer версии 1.9.х + плагин от Яндекс Облако по инструкции
+уandex cloud cli Так же инициализируйте профиль с помощью yc init .
+Примечание: Облачная ВМ с Linux в данной задаче не подойдёт из-за ограничений облачного провайдера. У вас просто не установится virtualbox.
+
+
+
+
+yc vpc network create  --name my-yc-network --labels my-label=my-value --description "ds first network via yc"
+enpg0p68m1eu4ggao78j 
+
+yc vpc subnet create --name my-yc-subnet-a --zone ru-central1-a --range 10.1.2.0/24 --network-name my-yc-network --description "my first subnet via vc"
+b1gerrinqqup1nenc9ak
+
+yc compute instance create   --name my-yc-instance  --network-interface subnet-name=my-yc-subnet-a,nat-ip-version=ipv4 --zone ru-central1-a  --create-boot-disk image-folder-id=standard-images,image=ubuntu-2404-lts  --ssh-key e:\keys\ya-u1.pub
+
+icacls.exe e:\keys\ya-u1.ppk /inheritance:r
+icacls.exe e:\keys\ya-u1.ppk /grant:r %username%:F
+
+yc compute ssh --id fhmbeppp9p42ggdomqp9 --identity-file  e:\keys\ya-u1.ppk --login yc-user
+
+ssh -i e:\keys\ya-u1.ppk yc-user@93.77.185.128
+
+
+
