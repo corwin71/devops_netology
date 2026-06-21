@@ -1,0 +1,24 @@
+Запустите ваш образ custom-nginx:1.0.0 командой docker run в соответвии с требованиями:
+имя контейнера "ФИО-custom-nginx-t2"
+контейнер работает в фоне
+контейнер опубликован на порту хост системы 127.0.0.1:8080
+Не удаляя, переименуйте контейнер в "custom-nginx-t2"
+Выполните команду date +"%d-%m-%Y %T.%N %Z" ; sleep 0.150 ; docker ps ; ss -tlpn | grep 127.0.0.1:8080  ; docker logs custom-nginx-t2 -n1 ; docker exec -it custom-nginx-t2 base64 /usr/share/nginx/html/index.html
+Убедитесь с помощью curl или веб браузера, что индекс-страница доступна.
+
+
+sudo docker network rm ds-net
+sudo docker container  prune
+
+
+sudo docker network create ds-net
+
+
+sudo docker run -it -d --name semenkin-custom-nginx-t2 --net ds-net -p 127.0.0.1:8080:80  custom-nginx:1.0.0 
+
+sudo docker rename  semenkin-custom-nginx-t2  custom-nginx-t2
+
+
+
+
+date +"%d-%m-%Y %T.%N %Z" ; sleep 0.150 ;sudo docker ps ; ss -tlpn | grep 127.0.0.1:8080  ;sudo  docker logs custom-nginx-t2 -n1 ;sudo docker exec -it custom-nginx-t2 base64 /usr/share/nginx/html/index.html

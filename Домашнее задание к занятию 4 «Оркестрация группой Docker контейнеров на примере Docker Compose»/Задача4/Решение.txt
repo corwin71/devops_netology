@@ -1,0 +1,31 @@
+
+Запустите первый контейнер из образа centos c любым тегом в фоновом режиме, подключив папку текущий рабочий каталог $(pwd) на хостовой машине в /data контейнера, используя ключ -v.
+Запустите второй контейнер из образа debian в фоновом режиме, подключив текущий рабочий каталог $(pwd) в /data контейнера.
+Подключитесь к первому контейнеру с помощью docker exec и создайте текстовый файл любого содержания в /data.
+Добавьте ещё один файл в текущий каталог $(pwd) на хостовой машине.
+Подключитесь во второй контейнер и отобразите листинг и содержание файлов в /data контейнера.
+В качестве ответа приложите скриншоты консоли, где видно все введенные команды и их вывод.
+
+
+
+ sudo docker run -it -d -v /home/ds:/data  --name centos-ds centos:8  bash
+
+ sudo docker run -it -d -v /home/ds:/data  --name debian-ds debian  bash
+
+docker ps
+
+
+sudo docker exec centos-ds touch /data/file1
+sudo docker exec centos-ds ls -la /data
+
+
+touch file2
+
+sudo docker exec debian-ds ls -la /data
+
+
+
+sudo docker stop centos-ds
+sudo docker rm centos-ds
+sudo docker stop debian-ds
+sudo docker rm debian-ds
