@@ -34,10 +34,10 @@ hello-world:latest                    96498ffd522e       25.9kB         9.49kB  
 mariadb:10.6.4-focal                  c014ba1efc5d        559MB          127MB
 shvirtd-example-python-nginx:latest   00de3b9c4db2        200MB         53.8MB
 wordpress:php8.2-apache               0b6e5bf0ed25       1.09GB          277MB
-ds@ds-netology:~/docker/shvirtd-example-python$ docker tag shvirtd-example-python-nginx \ cr.yandex/b1g2phrqhhje5kap5cbn/shvirtd-example-python-nginx
+ds@ds-netology:~/docker/shvirtd-example-python$ docker tag shvirtd-example-python-nginx \ cr.yandex/ID/shvirtd-example-python-nginx
 
-ds@ds-netology:~/docker/shvirtd-example-python$ docker tag shvirtd-example-python-nginx:latest cr.yandex/crpqddhr9no0gp3rdupq/shvirtd-example-python-nginx:latest
-ds@ds-netology:~/docker/shvirtd-example-python$ docker push cr.yandex/crpqddhr9no0gp3rdupq/shvirtd-example-python-nginx:latest
+ds@ds-netology:~/docker/shvirtd-example-python$ docker tag shvirtd-example-python-nginx:latest cr.yandex/ID/shvirtd-example-python-nginx:latest
+ds@ds-netology:~/docker/shvirtd-example-python$ docker push cr.yandex/ID/shvirtd-example-python-nginx:latest
 The push refers to repository [cr.yandex/crpqddhr9no0gp3rdupq/shvirtd-example-python-nginx]
 
 a330b6cecb98: Pushed
@@ -47,4 +47,4 @@ ed697f9eb3a9: Pushed
 f699b0db74e3: Pushed
 0f701a34c55e: Pushed
 3229dce7b89c: Pushed
-latest: digest: sha256:00de3b9c4db250010eb379bd5b50afad99c7664d71322979f685af7628b9fc2b size: 856
+
