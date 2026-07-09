@@ -3,14 +3,11 @@
 yc init --username=layland@ya.ru
 
 
-
-# Получить IAM-токен
+# РџРѕР»СѓС‡РёС‚СЊ IAM-С‚РѕРєРµРЅ
 yc iam create-token
 
 
-t1.9euelZrOx8yQipaVzIyTncrLnpaQxu3rnpWajcqTjY-Sz86Vmc2Jk47Ol5Hl8_dmFkUt-e8jPzB-_t3z9yZFQi357yM_MH7-1eL17Iac0ZCeiouX0Y-KnZOWnNKMm5Tt-ZCPmpGWm83n9euelZqZns7PzJ3Kys2RzMaTnJiKle_8xeuelZqZns7PzJ3Kys2RzMaTnJiKlb3rnpWalsyJlpSYzouWkI6MipLNzJ6164ac0ZaektGQj5qRlpvSjJqNiZqN.9NAbR7aSLWnNkUt4bVtRytc8TDRBxkATFPFsPj9QSpO0qQEpTjJPCBW4Of1gusK45IsvIISdwmZ1n99s9181Ag
-
-####создаем контейнер
+####СЃРѕР·РґР°РµРј РєРѕРЅС‚РµР№РЅРµСЂ
 
 C:\Users\corwi>yc container registry create --name test
 done (1s)
@@ -30,19 +27,24 @@ created_at: "2026-07-08T20:36:04.699Z"
 
 
 
-yc container registry configure-docker
+s@ds-netology:~/docker/shvirtd-example-python$ docker image list
+                                                                                                                                                                                                                         i Info в†’   U  In Use
+IMAGE                                 ID             DISK USAGE   CONTENT SIZE   EXTRA
+hello-world:latest                    96498ffd522e       25.9kB         9.49kB    U
+mariadb:10.6.4-focal                  c014ba1efc5d        559MB          127MB
+shvirtd-example-python-nginx:latest   00de3b9c4db2        200MB         53.8MB
+wordpress:php8.2-apache               0b6e5bf0ed25       1.09GB          277MB
+ds@ds-netology:~/docker/shvirtd-example-python$ docker tag shvirtd-example-python-nginx \ cr.yandex/b1g2phrqhhje5kap5cbn/shvirtd-example-python-nginx
 
+ds@ds-netology:~/docker/shvirtd-example-python$ docker tag shvirtd-example-python-nginx:latest cr.yandex/crpqddhr9no0gp3rdupq/shvirtd-example-python-nginx:latest
+ds@ds-netology:~/docker/shvirtd-example-python$ docker push cr.yandex/crpqddhr9no0gp3rdupq/shvirtd-example-python-nginx:latest
+The push refers to repository [cr.yandex/crpqddhr9no0gp3rdupq/shvirtd-example-python-nginx]
 
-yc container registry get --id crp3db988hn0603d6em7
-id: crp3db988hn0603d6em7
-folder_id: b1gerrinqqup1nenc9ak
-name: test
-status: ACTIVE
-created_at: "2026-07-08T20:36:04.699Z"
-
-
-# Собираем образ с тегом в YCR
-docker build -t registry.yandex.ru/crp3db988hn0603d6em7/myapp:latest .
-
-# Отправляем в реестр
-docker push registry.yandex.ru/crp3db988hn0603d6em7/myapp:latest
+a330b6cecb98: Pushed
+5ef80e6f29b5: Pushed
+ed697f9eb3a9: Pushed
+6e0a93e1837e: Pushed
+f699b0db74e3: Pushed
+0f701a34c55e: Pushed
+3229dce7b89c: Pushed
+latest: digest: sha256:00de3b9c4db250010eb379bd5b50afad99c7664d71322979f685af7628b9fc2b size: 856
