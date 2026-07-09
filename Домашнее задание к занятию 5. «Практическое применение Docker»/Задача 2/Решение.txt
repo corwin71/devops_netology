@@ -1,0 +1,48 @@
+ curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
+
+yc init --username=layland@ya.ru
+
+
+
+# Получить IAM-токен
+yc iam create-token
+
+
+t1.9euelZrOx8yQipaVzIyTncrLnpaQxu3rnpWajcqTjY-Sz86Vmc2Jk47Ol5Hl8_dmFkUt-e8jPzB-_t3z9yZFQi357yM_MH7-1eL17Iac0ZCeiouX0Y-KnZOWnNKMm5Tt-ZCPmpGWm83n9euelZqZns7PzJ3Kys2RzMaTnJiKle_8xeuelZqZns7PzJ3Kys2RzMaTnJiKlb3rnpWalsyJlpSYzouWkI6MipLNzJ6164ac0ZaektGQj5qRlpvSjJqNiZqN.9NAbR7aSLWnNkUt4bVtRytc8TDRBxkATFPFsPj9QSpO0qQEpTjJPCBW4Of1gusK45IsvIISdwmZ1n99s9181Ag
+
+####создаем контейнер
+
+C:\Users\corwi>yc container registry create --name test
+done (1s)
+id: crp3db988hn0603d6em7
+folder_id: b1gerrinqqup1nenc9ak
+name: test
+status: ACTIVE
+created_at: "2026-07-08T20:36:04.699Z"
+
+
+ C:\Users\corwi>yc container registry list
++----------------------+------+----------------------+
+|          ID          | NAME |      FOLDER ID       |
++----------------------+------+----------------------+
+| crp3db988hn0603d6em7 | test | b1gerrinqqup1nenc9ak |
++----------------------+------+----------------------+
+
+
+
+yc container registry configure-docker
+
+
+yc container registry get --id crp3db988hn0603d6em7
+id: crp3db988hn0603d6em7
+folder_id: b1gerrinqqup1nenc9ak
+name: test
+status: ACTIVE
+created_at: "2026-07-08T20:36:04.699Z"
+
+
+# Собираем образ с тегом в YCR
+docker build -t registry.yandex.ru/crp3db988hn0603d6em7/myapp:latest .
+
+# Отправляем в реестр
+docker push registry.yandex.ru/crp3db988hn0603d6em7/myapp:latest
