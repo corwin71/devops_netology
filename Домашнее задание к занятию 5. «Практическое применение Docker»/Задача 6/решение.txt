@@ -1,0 +1,17 @@
+Скачайте docker образ hashicorp/terraform:latest и скопируйте бинарный файл /bin/terraform на свою локальную машину, используя dive и docker save. Предоставьте скриншоты действий .
+
+
+
+#docker pull hashicorp/terraform:latest
+docker save hashicorp/terraform:latest
+mkdir -p terraform_extracted
+
+
+docker save -o terraform.tar  hashicorp/terraform:latest
+
+
+tar -xf terraform.tar -C terraform_extracted
+
+
+docker rm temp_terraform
+
